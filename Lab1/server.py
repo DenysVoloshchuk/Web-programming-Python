@@ -8,16 +8,17 @@ serv.bind((socket.gethostname(), 1309))
 serv.listen()
 
 clientsocket, address = serv.accept()
-msg = clientsocket.recv(1024)
-print(datetime.now(), ' > ', msg.decode('utf-8'))
+while True:
+    msg = clientsocket.recv(1024)
+    if msg.decode('utf-8') == 'stop':
+        break    
+    print(datetime.now(), ' > ', msg.decode('utf-8'))
 
-sleep(5)
+    sleep(5)
+    if  len(msg.decode('utf-8')) == len(msg):
+        clientsocket.send((msg))
+        print("All data sented succesfully")
+    else:
+        print('Error')
 
-if  len(msg.decode('utf-8')) == len(msg):
-    clientsocket.send((msg))
-    print("All data sented succesfully")
-else:
-    print('Error')
-
-clientsocket.close()
 
