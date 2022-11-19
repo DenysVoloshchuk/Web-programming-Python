@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Form data processing</title>
+<link rel="stylesheet" href="css/index_style.css">
+</head>
+<body>  
+    <form action="/cgi-bin/form.py" class="form" >
+        <h2>Fill out the form, please</h2>
+        <input type="text" name="FIRST_NAME" placeholder="Firstname"><br>
+        <input type="text" name="LAST_NAME" placeholder="Lastname"><br>
+        <input type="radio" name="sex" value="Male"> Male
+        <input type="radio" name="sex" value="Female">Female <br>
+        <h3>Select sabjects:</h3>
+        <input type="checkbox" name="subjects" value="Math"> Math <br>
+        <input type="checkbox" name="subjects" value="Physics"> Physics <br>
+        <input type="checkbox" name="subjects" value="Chemistry"> Chemistry <br>
+        <input type="checkbox" name="subjects" value="English"> English <br>
+        <input type="checkbox" name="subjects" value="Literature"> Literature <br>
+        <input type="checkbox" name="subjects" value="PE"> PE <br>
+        <input type="submit" title="Send">
+    </form>
+</body>
+</html>
