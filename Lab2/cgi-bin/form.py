@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import cgi
 import html
+import http.cookies
+import os
 
 form = cgi.FieldStorage()
 first_name = form.getfirst("FIRST_NAME", "no data")
@@ -9,6 +11,17 @@ sex = form.getfirst("sex","no data")
 subjects = form.getvalue("subjects", "no data")
 first_name = html.escape(first_name)
 last_name = html.escape(last_name)
+
+cookie = http.cookies.SimpleCookie(os.environ.get("HTTP_COOKIE"))
+
+count = cookie.get("count")
+
+if count is None:
+    count = 1
+    print(f"Set-cookie: count={count} httponly")
+else:
+    count = int(count.value) + 1
+    print(f"Set-cookie: count={count} httponly")
 
 print("Content-type: text/html\n")
 print("""<!DOCTYPE HTML>
